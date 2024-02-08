@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour 
 {
     public float speed = 5f;
+    public int health = 5;
+
     private Rigidbody rb;
-    private int score = 0; // Score variable
+    private int score = 0;
 
     void Start () 
     {
@@ -30,16 +32,24 @@ public class PlayerController : MonoBehaviour
     // Function to handle collisions with objects
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Pickup")) // Check if collider's tag is "Pickup"
+        if (other.CompareTag("Pickup")) // Check if tag is "Pickup"
         {
             // Increment the score
             score++;
 
-            // Log the updated score to the console
+            // Log the updated score to console
             Debug.Log("Score: " + score);
 
-			// Destroys object on contact
-        	Destroy(other.gameObject);
+            // Destroy the pickup object on contact
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Trap")) // Check if tag is "Trap"
+        {
+            // Decrement the health
+            health--;
+
+            // Log the updated health to console
+            Debug.Log("Health: " + health);
         }
     }
 }
