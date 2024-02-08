@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
         offset = transform.position - player.transform.position;
     }
     
-    void FixedUpdateUpdate () 
+    void FixedUpdate () 
     {
         // Update the camera's position relative to player
         transform.position = player.transform.position + offset;
