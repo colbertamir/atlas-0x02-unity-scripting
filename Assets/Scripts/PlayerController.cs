@@ -51,5 +51,10 @@ public class PlayerController : MonoBehaviour
             // Log the updated health to console
             Debug.Log("Health: " + health);
         }
+		else if (other.CompareTag("Goal")) // Check if tag is "Goal"
+		{
+			// Logs "You win!" to console
+			Debug.Log("You win!");
+		}
     }
 }
